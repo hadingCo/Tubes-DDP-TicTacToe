@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include "sipaling_header.h"
+#include <stdlib.h>
 
 void MenuAwal(){
 	char key;
