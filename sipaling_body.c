@@ -18,9 +18,7 @@ void MenuAwal(){
 	printf("%*s\n",21," 	 | |___   >  <  | | | |_               ");
 	printf("%*s\n",21,"  	 |_____| |_||_| |_|  |__|              ");
 
-	i = getch();
 	
-
 	do 
 	{                                                                              
             key = getch();  // Baca kode panah yang sebenarnya
@@ -40,7 +38,6 @@ void MenuAwal(){
 				printf("%*s\n",21," 	 |  _|   | || | | | | __|              ");
 				printf("%*s\n",21," 	 | |___   >  <  | | | |_               ");
 				printf("%*s\n",21,"  	 |_____| |_||_| |_|  |__|              ");
-                    
 				break;
 
                 case 's':
@@ -57,16 +54,17 @@ void MenuAwal(){
 					printf("%*s\n",21," | |   / __/   | |   | |___   >  <  | | | |_ ");
 					printf("%*s\n",21," | |  |_____|  | |   |_____| |_||_| |_|  |__|");
 					printf("%*s\n",10,"  |_|         /_/ 							");
+
 				break;  
 	    }      
 		
 	} while (key == 'w' || key == 's');
 		
 
+	MenuGame();
 
-
-	printf("%*s\n",20,"(2)Exit");
-	key = getch();
+	// printf("%*s\n",20,"(2)Exit");
+	// key = getch();
 }
 
 	

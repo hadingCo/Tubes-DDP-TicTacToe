@@ -7,6 +7,6 @@ void MenuGame();
 void MasukkanPemain();
 void Papan();
 char key;
-int i;
+char i;
 
 char NamaPemain1[20], NamaPemain2[20];

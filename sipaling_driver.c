@@ -5,6 +5,5 @@
 
 int main (){
 	MenuAwal();
-	MenuGame();
 	return 0;
 }
