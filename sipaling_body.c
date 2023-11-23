@@ -50,7 +50,7 @@ void MenuAwal(){
 
 	
 void MenuGame(){
-	if (key =='1``'){
+	if (key ==' '){
 		system("cls");
 		TeksHeader();
 		printf("%*s\n",35,"> (1) Player 1 Vs Player 2 <");
