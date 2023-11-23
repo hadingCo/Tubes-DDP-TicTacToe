@@ -4,80 +4,82 @@
 #include "sipaling_header.h"
 
 void MenuAwal(){		
-	printf("%*s\n\n",18,"MENU");
-	printf("%*s\n",30,"   __  _  __      ____    _                    _   ");
-	printf("%*s\n",30,"  / / / | | |    / ___|  | |_    __ _   _ __  | |_ ");
-	printf("%*s\n",30," | |  | |  | |   |___ |  | __|  / _` | | '__| | __|");
-	printf("%*s\n",30," | |  | |  | |    ___) | | |_  | (_| | | |    | |_ ");
-	printf("%*s\n",30," | |  |_|  | |   |____/   |__|  |__,_| |_|     |__|");
-	printf("%*s\n",19,"  |_|     /_/       								  ");
+	TeksHeader();
+	printf("%*s\n",30," Start ");
 	printf("\n\n");
-	printf("%*s\n",21,"  	  _____          _   _   			   ");
-	printf("%*s\n",21,"  	 | ____| __  __ (_) | |_               ");
-	printf("%*s\n",21," 	 |  _|   | || / | | | __|              ");
-	printf("%*s\n",21," 	 | |___   >  <  | | | |_               ");
-	printf("%*s\n",21,"  	 |_____| |_||_| |_|  |__|              ");
-
-	
+	printf("%*s\n",30," Exit ");
 	do 
-	{                                                                              
-            key = getch();  // Baca kode panah yang sebenarnya
-            switch (key) 
-	    {
-                case 'w':
-				system("cls");
-                printf("%*s\n",30,"   __  _  __      ____    _                    _   ");
-				printf("%*s\n",30,"  / / / | | |    / ___|  | |_    __ _   _ __  | |_ ");
-				printf("%*s\n",30," | |  | |  | |   |___ |  | __|  / _` | | '__| | __|");
-				printf("%*s\n",30," | |  | |  | |    ___) | | |_  | (_| | | |    | |_ ");
-				printf("%*s\n",30," | |  |_|  | |   |____/   |__|  |__,_| |_|     |__|");
-				printf("%*s\n",19,"  |_|     /_/       ");
-				printf("\n\n");
-				printf("%*s\n",21,"  	  _____          _   _   			   ");
-				printf("%*s\n",21,"  	 | ____| __  __ (_) | |_               ");
-				printf("%*s\n",21," 	 |  _|   | || | | | | __|              ");
-				printf("%*s\n",21," 	 | |___   >  <  | | | |_               ");
-				printf("%*s\n",21,"  	 |_____| |_||_| |_|  |__|              ");
-				break;
+	{
+		key = getch();
+		switch (key)
+		{
+			case 'w':
+			system("cls");
+			TeksHeader();
+			printf("%*s\n",35,"> Start <");
+			printf("\n");
+			printf("%*s\n",30," Exit ");
+			break;
 
-                case 's':
-				system("cls");
-					printf("%*s\n",30,"  ____    _                    _            ");
-					printf("%*s\n",30," / ___|  | |_    __ _   _ __  | |_          ");
-					printf("%*s\n",30," |___|   | __|  / _` | | '__| | __| 		   ");
-					printf("%*s\n",30,"  ___) | | |_  | (_| | | |    | |_  		   ");
-					printf("%*s\n",30," |____/   |__|  |__,_| |_|     |__|         ");
-					printf("\n\n");
-					printf("%*s\n",21,"   __  ____   __      _____          _   _   ");
-					printf("%*s\n",21,"  / / |___ |  | |    | ____| __  __ (_) | |_ ");
-					printf("%*s\n",21," | |    __) |  | |   |  _|   | || | | | | __|");
-					printf("%*s\n",21," | |   / __/   | |   | |___   >  <  | | | |_ ");
-					printf("%*s\n",21," | |  |_____|  | |   |_____| |_||_| |_|  |__|");
-					printf("%*s\n",10,"  |_|         /_/ 							");
-
-				break;  
-	    }      
-		
+			case 's':
+			system("cls");
+			TeksHeader();
+			printf("%*s\n",30," Start ");
+			printf("\n");
+			printf("%*s\n",35,"> Exit <");
+			break;
+		}
 	} while (key == 'w' || key == 's');
-		
+		MenuGame();
+	
 
-	MenuGame();
-
-	// printf("%*s\n",20,"(2)Exit");
-	// key = getch();
 }
+
+	void TeksHeader(){
+		printf("%*s\n",30," _____________________________________________________________________________________________________   ");
+		printf("%*s\n",30," ||                                     Created By HadingCO                                          ||  ");
+		printf("%*s\n",30," ||            _____   ___    ____     _____      _       ____     _____    ___    _____             ||  ");
+		printf("%*s\n",30," ||           |_   _| |_ _|  / ___|   |_   _|    | |     / ___|   |_   _|  | _ |  | ____|            ||  ");
+		printf("%*s\n",30," ||   _____     | |    | |  | |         | |     | _ |   | |         | |   | | | | |  _|      _____   ||  ");
+		printf("%*s\n",30," ||  |_____|    | |    | |  | |___      | |    | ___ |  | |___      | |   | |_| | | |___    |_____|  ||  ");
+		printf("%*s\n",30," ||             |_|   |___|  |____|     |_|   |_|   |_|  |____|     |_|    |___|  |_____|            ||  ");
+		printf("%*s\n",30," ||                                                                                                  ||  ");
+		printf("%*s\n",30," ||__________________________________________________________________________________________________||  ");
+		printf("\n\n\n");
+	}
 
 	
 void MenuGame(){
-	if (key=='1'){
+	if (key ==' '){
 		system("cls");
-		printf("%*s\n\n",27,"MODE PERMAINAN");
-		printf("%*s\n",31,"(1)Player 1 vs Player 2");
-		printf("%*s\n",31,"(2)Player 1 vs Komputer");
-	
+		TeksHeader();
+		printf("%*s\n",35,"> (1) Player 1 Vs Player 2 <");
+		printf("\n");
+		printf("%*s\n",30," Player Vs Komputer ");
+		do 
+	{
 		key = getch();
+		switch (key)
+		{
+			case 'w':
+			system("cls");
+			TeksHeader();
+			printf("%*s\n",35,"> (1) Player Vs Player <");
+			printf("\n");
+			printf("%*s\n",30," Player Vs Komputer ");
+			break;
+
+			case 's':
+			system("cls");
+			TeksHeader();
+			printf("%*s\n",30," Player Vs Player");
+			printf("\n");
+			printf("%*s\n",35,"> (2) Player Vs Komputer <");
+			break;
+		}
+	} while (key == 'w' || key == 's');
 		
-		if (key=='1'){
+		if (key=='w'){
 			system("cls");
 			MasukkanPemain();
 			void Papan();
@@ -87,9 +89,10 @@ void MenuGame(){
 			printf("%*s\n\n",1,"hihih");
 		}
 		
-	} else if (key=='2'){
+	} else if (key=='s' && i=='\n'){
 		system("cls");
-		printf("%*s\n",18,"DADAH");	
+		TeksHeader();
+		printf("%*s\n",30,"DADAH");	
 	}
 }
 
