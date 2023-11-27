@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "sipaling_header.h"
+#include <accctrl.h>
 
 
 void TeksHeader()
@@ -167,7 +168,6 @@ void Permainan()
 {
 	
 }
-<<<<<<< HEAD
 
 
 void ResetPapan()
@@ -221,5 +221,3 @@ void CetakMenang()
 {
 
 }
-=======
->>>>>>> edf3c7e7ea0acfd5525686d3a67a3b2e0ebb6603
