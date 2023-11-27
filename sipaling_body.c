@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "sipaling_header.h"
-#include <accctrl.h>
+
 
 
 void TeksHeader()
