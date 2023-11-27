@@ -4,6 +4,16 @@
 #include "sipaling_body.c"
 
 int main (){
+	TeksHeader();
 	MenuAwal();
+	DisplayNama();
+
+	char pemenang = ' ';
+	ResetPapan();
+	CetakPapan();
+
+
 	return 0;
 }
+
+	
