@@ -36,3 +36,12 @@ int printData();
 
 void displayMenu(int tombol);
 void PilihanTombol(int tombol);
+
+
+//3x3
+void drawLine(int n);
+void drawBoard(int n, char board[3][3]);
+bool check_winner(char board[3][3], char player);
+bool is_valid_move(char board[3][3], int i, int j);
+void create_board(char board[3][3]);
+void permaianan3x3();

@@ -189,6 +189,8 @@ void PilihanTombol(int tombol) {
         case 1:
         	system("cls");
             printf("TIGA KALI TIGA\n");
+			permaianan3x3();
+
             break;
         case 2:
         	system("cls");
@@ -251,3 +253,135 @@ int printData()
 	printf("\n------------------------");
 	
 }
+
+//3x3
+void permaianan3x3(){
+    int a;
+    char board[3][3];
+    create_board(board);
+    printf("Masukkan ukuran papan: ");
+    scanf("%d", &a);
+    
+
+    int i, j;
+    char player = 'X';
+    bool game_over = false;
+    int moves = 0;
+
+    while (!game_over) {
+        drawBoard(a,board);
+        printf("\nPlayer %c, enter your move: ", player);
+        scanf("%d %d", &i, &j);
+
+        if (is_valid_move(board, i-1, j-1)) {
+            board[i-1][j-1] = player;
+            moves++;
+
+            if (check_winner(board, player)) {
+                drawBoard(a,board);
+                printf("\nSelamat, Player %c menang!\n", player);
+                break;
+            }
+
+            if (moves == 9) {
+                drawBoard(a,board);
+                printf("\nIt's a tie!\n");
+                break;
+            }
+
+            player = (player == 'X') ? 'O' : 'X'; // Switch player
+        } else {
+            printf("\nInvalid move, try again.\n");
+        }
+    }
+
+    return 0;
+}
+
+
+
+void drawLine(int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%*s",100,"----");
+    }
+    printf("\n");
+}
+
+
+void drawBoard(int n, char board[3][3]) {
+    // Assuming a fixed terminal width for demonstration purposes
+    int terminalWidth = 110;
+
+    // Calculate the left padding to center the board
+    int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
+
+    for (int i = 0; i < n; i++) {
+                // Move cursor to the middle before printing the line
+        
+
+
+        // Move cursor to the middle before printing the line
+        printf("\e[%dG", leftPadding);
+
+        for (int j = 0; j < n; j++) {
+            printf("| %c ", board[i][j]);
+        }
+        printf("|\n");
+
+        // Move cursor to the middle before printing the line
+        printf("\e[%dG", leftPadding);
+
+        // Draw the horizontal line
+        for (int k = 0; k < n ; k++) {
+            printf("----");
+        }
+
+        printf("\n");
+    }
+}
+
+
+
+bool is_valid_move(char board[3][3], int i, int j) {
+    return (board[i][j] == ' ');
+}
+
+bool check_winner(char board[3][3], char player) {
+    // Check horizontal and vertical lines
+    for (int i = 0; i < 3; i++) {
+        if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
+            return true;
+        if (board[0][i] == player && board[1][i] == player && board[2][i] == player)
+            return true;
+    }
+
+    // Check diagonals
+    if (board[0][0] == player && board[1][1] == player && board[2][2] == player)
+        return true;
+    if (board[0][2] == player && board[1][1] == player && board[2][0] == player)
+        return true;
+
+    return false;
+}
+
+void print_board(char board[3][3]) {
+    printf("\n\n");
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%c ", board[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void create_board(char board[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            board[i][j] = ' ';
+
+        }
+        
+    }
+}
+
+
