@@ -6,11 +6,9 @@
 int main (){
 	TeksHeader();
 	MenuAwal();
+	PilihBoard();
 	DisplayNama();
 
-	char pemenang = ' ';
-	ResetPapan();
-	CetakPapan();
 
 
 	return 0;

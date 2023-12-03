@@ -4,7 +4,6 @@
 #include "sipaling_header.h"
 
 
-
 void TeksHeader()
 {
 	printf("%*s\n",150," _____________________________________________________________________________________________________   ");
@@ -20,7 +19,8 @@ void TeksHeader()
 }
 
 void MenuAwal()
-{		
+{	
+	b=1;
 	printf("\n\n");
 	printf("%*s\n",112,"> \033[33m(1) Start\033[0m <");
 	printf("\n");
@@ -78,6 +78,7 @@ void PilihMode()
 {
 	a=0;
 	b=0;
+	b=1;
 	printf("%*s\n\n",115,"\033[4mPilih Mode Permainan\033[0m");
 	printf("%*s\n",129," > (1) \033[31mPlayer 1\033[0m Vs \033[34mPlayer 2\033[0m <");
 	printf("\n");
@@ -121,7 +122,7 @@ void PilihMode()
 				{
                     system("cls");
 					TeksHeader();
-                    //Komputer();
+                    PilihBoard();
 					a =1;
                 }
                 break;
@@ -129,6 +130,7 @@ void PilihMode()
 	}
 }
 
+// AKHIR DARI PROGRAM
 void KeluarAwal()
 {
 	printf("%*s\n",125,"  __                         __                       ");
@@ -140,6 +142,7 @@ void KeluarAwal()
 	
 }
 
+//INPUT NAMA PEMAIN 1 DAN PEMAIN 2
 void MasukkanPemain()
 {	
 	printf("%*s\n\n",115 ,"\033[4mMasukkan Nama Pemain\033[0m");
@@ -149,6 +152,7 @@ void MasukkanPemain()
 	scanf("%[^\n]%*c", NamaPemain2);
 }
 
+// MENAMPILKAN NAMA PEMAIN
 void DisplayNama()
 {
 	system("cls");
@@ -159,65 +163,91 @@ void DisplayNama()
 	printf("\033[34m%s (O)\033[0m|", NamaPemain2);
 }
 
-int CekKosong()
+// MEMILIH UKURAN BOARD
+void PilihBoard()
 {
+	int tombol = 1;
 
+    while (1) {
+        displayMenu(tombol);
+
+        char key = getch(); 
+
+        if (key == 's' && tombol < 3) {
+            tombol++;
+        } else if (key == 'w' && tombol > 1) {
+            tombol--;
+        } else if (key == 13) { 
+            PilihanTombol(tombol);
+            break; 
+        }
+    }
 }
 
-void Permainan()
-{
-	
+void PilihanTombol(int tombol) {
+    switch (tombol) {
+        case 1:
+        	system("cls");
+            printf("TIGA KALI TIGA\n");
+            break;
+        case 2:
+        	system("cls");
+            printf("LIMA KALI LIMA\n");
+            break;
+        case 3:
+        	system("cls");
+            printf("TUJUH KALI TUJUH\n");
+            break;
+        default:
+            break;
+    }
+}
+
+void displayMenu(int tombol) {
+    system("cls"); // Clear the console screen (Windows-specific)
+	TeksHeader();
+    printf("%*s\n\n",113,"\033[4mPilih Ukuran Board\033[0m");
+    printf("%*s",104, (tombol == 1) ? "\033[34m> \033[0m" : "");
+    printf("3x3 %s\n\n", (tombol == 1) ? "\033[34m<\033[0m" : "");
+    printf("%*s",104, (tombol == 2) ? "\033[34m> \033[0m" : "");
+    printf("5x5 %s\n\n", (tombol == 2) ? "\033[34m<\033[0m" : "");
+    printf( "%*s",104, (tombol == 3) ? "\033[34m> \033[0m" : "");
+    printf("7x7 %s\n\n", (tombol == 3) ? "\033[34m<\033[0m" : "");
 }
 
 
-void ResetPapan()
-{
 
-	for(int i = 0; i < 3; i++)
+
+
+// TIMER 10 DETIK KESEMPATAN TIAP PEMAIN
+void delay(ms)
+{
+	clock_t timeDelay = ms + clock();
+	while (timeDelay > clock() );
+}
+int counter()
+{
+	while(!kbhit() && flag == 0)
 	{
-		for(int j = 0; j < 3; j++)
+		if(second <= 11 && second >= 1)
 		{
-			Papan[i][j] = ' ';
+			delay(1000);
+			second--;
+		}
+		printData();
+		if(second == 0)
+		{
+			break;
 		}
 	}
+	MenuAwal();
 }
 
-
-void CetakPapan()
+int printData()
 {
-	printf("\n\n");
-    printf("%*s",89,"");
-	printf("| %c | %c | %c |\n", Papan[0][0], Papan[0][1], Papan[0][2]);
-	printf("%*s",103,"|---|---|---|\n");
-    printf("%*s",89,"");
-	printf("| %c | %c | %c |\n", Papan[1][0], Papan[1][1], Papan[1][2]);
-	printf("%*s",103,"|---|---|---|\n");
-    printf("%*s",89,"");
-	printf("| %c | %c | %c |\n", Papan[2][0], Papan[2][1], Papan[2][2]);
-	printf("\n");
+	system("cls");
+	printf("---------------------------\n");
+	printf("%d Detik",second);
+	printf("\n------------------------");
 	
-}
-
-
-void PergerakanPemain()
-{
-
-}
-
-
-void PergerakanKomputer()
-{
-
-}
-
-
-void CekMenang()
-{
-
-}
-
-
-void CetakMenang()
-{
-
 }
