@@ -1,6 +1,7 @@
 #include "sipaling_header.h"
 
 
+
 void TeksHeader()
 {
 	printf("%*s\n",150," _____________________________________________________________________________________________________   ");
@@ -158,6 +159,7 @@ void DisplayNama()
 	printf("\033[31m%s (X)\033[0m|", NamaPemain1);
 	printf("%*s",40, "|");
 	printf("\033[34m%s (O)\033[0m|", NamaPemain2);
+    printf("\n\n");
 }
 
 // MEMILIH UKURAN BOARD
@@ -192,6 +194,7 @@ void PilihanTombol(int tombol) {
         case 2:
         	system("cls");
             printf("LIMA KALI LIMA\n");
+            permainan5x5();
             break;
         case 3:
         	system("cls");
@@ -213,171 +216,4 @@ void displayMenu(int tombol) {
     printf( "%*s",104, (tombol == 3) ? "\033[34m> \033[0m" : "");
     printf("7x7 %s\n\n", (tombol == 3) ? "\033[34m<\033[0m" : "");
 }
-
-
-
-
-
-// TIMER 10 DETIK KESEMPATAN TIAP PEMAIN
-void delay(ms)
-{
-	clock_t timeDelay = ms + clock();
-	while (timeDelay > clock() );
-}
-int counter()
-{
-	while(!kbhit() && flag == 0)
-	{
-		if(second <= 11 && second >= 1)
-		{
-			delay(1000);
-			second--;
-		}
-		printData();
-		if(second == 0)
-		{
-			break;
-		}
-	}
-	MenuAwal();
-}
-
-int printData()
-{
-	system("cls");
-	printf("---------------------------\n");
-	printf("%d Detik",second);
-	printf("\n------------------------");
-	
-}
-
-//3x3
-void permaianan3x3(){
-    int a;
-    char board[3][3];
-    create_board(board);
-    TeksHeader();
-    printf("Masukkan ukuran papan: ");
-    scanf("%d", &a);
-    
-
-    int i, j;
-    char player = 'X';
-    bool game_over = false;
-    int moves = 0;
-
-    while (!game_over) {
-        drawboard3(a,board);
-        printf("\nPlayer %c, enter your move: ", player);
-        scanf("%d %d", &i, &j);
-
-        if (is_valid_move(board, i-1, j-1)) {
-            board[i-1][j-1] = player;
-            moves++;
-
-            if (check_winner(board, player)) {
-                drawboard3(a,board);
-                printf("\nSelamat, Player %c menang!\n", player);
-                break;
-            }
-
-            if (moves == 9) {
-                drawboard3(a,board);
-                printf("\nIt's a tie!\n");
-                break;
-            }
-
-            player = (player == 'X') ? 'O' : 'X'; // Switch player
-        } else {
-            printf("\nInvalid move, try again.\n");
-        }
-    }
-
-    return 0;
-}
-
-
-
-void drawLine(int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%*s",100,"----");
-    }
-    printf("\n");
-}
-
-
-void drawboard3(int n, char board[SIZE_3][SIZE_3]) {
-    // Assuming a fixed terminal width for demonstration purposes
-    int terminalWidth = 110;
-
-    // Calculate the left padding to center the board
-    int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
-
-    for (int i = 0; i < n; i++) {
-                // Move cursor to the middle before printing the line
-        
-        // Move cursor to the middle before printing the line
-        printf("\e[%dG", leftPadding);
-
-        for (int j = 0; j < n; j++) {
-            printf("| %c ", board[i][j]);
-        }
-        printf("|\n");
-
-        // Move cursor to the middle before printing the line
-        printf("\e[%dG", leftPadding);
-
-        // Draw the horizontal line
-        for (int k = 0; k < n ; k++) {
-            printf("----");
-        }
-
-        printf("\n");
-    }
-}
-
-
-
-bool is_valid_move(char board[SIZE_3][SIZE_3], int i, int j) {
-    return (board[i][j] == ' ');
-}
-
-bool check_winner(char board[SIZE_3][SIZE_3], char player) {
-    // Check horizontal and vertical lines
-    for (int i = 0; i < 3; i++) {
-        if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
-            return true;
-        if (board[0][i] == player && board[1][i] == player && board[2][i] == player)
-            return true;
-    }
-
-    // Check diagonals
-    if (board[0][0] == player && board[1][1] == player && board[2][2] == player)
-        return true;
-    if (board[0][2] == player && board[1][1] == player && board[2][0] == player)
-        return true;
-
-    return false;
-}
-
-void print_board(char board[SIZE_3][SIZE_3]) {
-    printf("\n\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            printf("%c ", board[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void create_board(char board[SIZE_3][SIZE_3]) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            board[i][j] = ' ';
-
-        }
-        
-    }
-}
-
 

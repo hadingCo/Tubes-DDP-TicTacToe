@@ -8,9 +8,6 @@ int main (){
 	MenuAwal();
 	PilihBoard();
 	DisplayNama();
-
-
-
 	return 0;
 }
 

@@ -13,7 +13,6 @@ void KeluarAwal();
 void PilihMode();
 void MasukkanPemain();
 void DisplayNama();
-
 void Permainan();
 
 //Variabel
@@ -27,13 +26,6 @@ char NamaPemain1[50], NamaPemain2[50];
 void PilihBoard();
 void DisplayPilihBoard();
 
-
-int second = 11;flag = 0;
-
-
-void delay(ms);
-
-int printData();
 
 void displayMenu(int tombol);
 void PilihanTombol(int tombol);

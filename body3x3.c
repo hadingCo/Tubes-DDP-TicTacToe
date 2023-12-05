@@ -7,8 +7,7 @@ void permaianan3x3(){
     char board[3][3];
     create_board3(board);
     TeksHeader();
-    printf("Masukkan ukuran papan: ");
-    scanf("%d", &a);
+    a=3;
     
 
     int i, j;
@@ -17,6 +16,9 @@ void permaianan3x3(){
     int moves = 0;
 
     while (!game_over) {
+        system("cls");
+        TeksHeader();
+        DisplayNama();
         drawBoard3(a,board);
         printf("\nPlayer %c, enter your move: ", player);
         scanf("%d %d", &i, &j);
@@ -25,13 +27,19 @@ void permaianan3x3(){
             board[i-1][j-1] = player;
             moves++;
 
-            if (check_winner(board, player)) {
+            if (check_winner3(board, player)) {
+                system("cls");
+                TeksHeader();
+                DisplayNama();
                 drawBoard3(a,board);
                 printf("\nSelamat, Player %c menang!\n", player);
                 break;
             }
 
             if (moves == 9) {
+                system("cls");
+                TeksHeader();
+                DisplayNama();
                 drawBoard3(a,board);
                 printf("\nIt's a tie!\n");
                 break;
@@ -43,7 +51,7 @@ void permaianan3x3(){
         }
     }
 
-    return 0;
+
 }
 
 
@@ -58,7 +66,7 @@ void drawLine3(int n) {
 
 void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
     // Assuming a fixed terminal width for demonstration purposes
-    int terminalWidth = 110;
+    int terminalWidth = 186;
 
     // Calculate the left padding to center the board
     int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
@@ -92,7 +100,7 @@ bool is_valid_move(char board[SIZE_3][SIZE_3], int i, int j) {
     return (board[i][j] == ' ');
 }
 
-bool check_winner(char board[SIZE_3][SIZE_3], char player) {
+bool check_winner3(char board[SIZE_3][SIZE_3], char player) {
     // Check horizontal and vertical lines
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
@@ -123,7 +131,7 @@ void print_board3(char board[SIZE_3][SIZE_3]) {
 void create_board3(char board[SIZE_3][SIZE_3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            board[i][j] = ' ';
+            board[i][j] = '-';
 
         }
         
