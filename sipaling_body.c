@@ -199,6 +199,7 @@ void PilihanTombol(int tombol) {
         case 3:
         	system("cls");
             printf("TUJUH KALI TUJUH\n");
+            permainan7x7();
             break;
         default:
             break;

@@ -53,8 +53,8 @@ void permainan5x5();
 //7x7
 #define SIZE_7 7
 
-void drawLine(int n);
-void drawBoard(int n, char board[SIZE_7][SIZE_7]);
-bool checkWinner(int n, char board[SIZE_7][SIZE_7], char player);
-bool isFull(int n, char board[SIZE_7][SIZE_7]);
+void drawLine7(int n);
+void drawBoard7(int n, char board[SIZE_7][SIZE_7]);
+bool checkWinner7(int n, char board[SIZE_7][SIZE_7], char player);
+bool isFull7(int n, char board[SIZE_7][SIZE_7]);
 void permainan5x5();

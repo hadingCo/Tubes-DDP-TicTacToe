@@ -2,23 +2,22 @@
 
 
 
-
-void permainan5x5() {
-    int n = 4;
-    char board[SIZE_5][SIZE_5];
+void permainan7x7() {
+    int n = 5;
+    char board[SIZE_7][SIZE_7];
     char player = 'X';
 
-    for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= n; j++) {
+    for (int i = 0; i < SIZE_7; i++) {
+        for (int j = 0; j < SIZE_7; j++) {
             board[i][j] = '-';
         }
     }
 
-    drawBoard5(SIZE_5, board);
+    drawBoard7(SIZE_7, board);
 
-    while (!isFull5(n, board) && !checkWinner5(n, board, player)) {
+    while (!isFull7(SIZE_7, board) && !checkWinner7(n, board, player)) {
         system("cls");
-        drawBoard5(SIZE_5, board);
+        drawBoard7(SIZE_7, board);
         int row, col;
         printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", player, n);
         scanf("%d %d", &row, &col);
@@ -30,7 +29,7 @@ void permainan5x5() {
             continue;
         }
 
-        if (checkWinner5(n, board, player)) {
+        if (checkWinner7(n, board, player)) {
             printf("Selamat, pemain %c menang!\n", player);
             break;
         }
@@ -41,10 +40,10 @@ void permainan5x5() {
             player = 'X';
         }
 
-        drawBoard5(n, board);
+        drawBoard7(SIZE_7, board);
     }
 
-    if (isFull5(SIZE_5, board) && !checkWinner5(n, board, player)) {
+    if (isFull7(SIZE_7, board) && !checkWinner7(n, board, player)) {
         printf("Game berakhir seri.\n");
     }
 
@@ -52,25 +51,25 @@ void permainan5x5() {
 }
 
 
-void drawLine5(int n) {
+void drawLine7(int n) {
     for (int i = 0; i < n; i++) {
-        printf("----");
+        printf("-----");
     }
     printf("\n");
 }
 
-void drawBoard5(int n, char board[SIZE_5][SIZE_5]) {
-    drawLine5(n);
+void drawBoard7(int n, char board[SIZE_7][SIZE_7]) {
+    drawLine7(n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             printf("| %c ", board[i][j]);
         }
         printf("|\n");
-        drawLine5(n);
+        drawLine7(n);
     }
 }
 
-bool checkWinner5(int n, char board[SIZE_5][SIZE_5], char player) {
+bool checkWinner7(int n, char board[SIZE_7][SIZE_7], char player) {
     for (int i = 0; i < n; i++) {
         int rowCount = 0, colCount = 0;
         for (int j = 0; j < n; j++) {
@@ -90,7 +89,7 @@ bool checkWinner5(int n, char board[SIZE_5][SIZE_5], char player) {
     return false;
 }
 
-bool isFull5(int n, char board[SIZE_5][SIZE_5]) {
+bool isFull7(int n, char board[SIZE_7][SIZE_7]) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (board[i][j] == '-') return false;
