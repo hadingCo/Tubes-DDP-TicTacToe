@@ -259,6 +259,7 @@ void permaianan3x3(){
     int a;
     char board[3][3];
     create_board(board);
+    TeksHeader();
     printf("Masukkan ukuran papan: ");
     scanf("%d", &a);
     

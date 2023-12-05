@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/ACER/Documents/GitHub/Tubes-DDP-TicTacToe",
-      "program": "c:/Users/ACER/Documents/GitHub/Tubes-DDP-TicTacToe/build/Debug/outDebug",
+      "cwd": "c:/Users/ACER/Desktop/Kuliah/Tugas Kuliah/Semester 1/Dasar-dasar Pemrograman/HASEUM/Tubes-DDP-TicTacToe",
+      "program": "c:/Users/ACER/Desktop/Kuliah/Tugas Kuliah/Semester 1/Dasar-dasar Pemrograman/HASEUM/Tubes-DDP-TicTacToe/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
