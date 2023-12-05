@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
 #include "sipaling_header.h"
 
 
@@ -270,7 +267,7 @@ void permaianan3x3(){
     int moves = 0;
 
     while (!game_over) {
-        drawBoard(a,board);
+        drawboard3(a,board);
         printf("\nPlayer %c, enter your move: ", player);
         scanf("%d %d", &i, &j);
 
@@ -279,13 +276,13 @@ void permaianan3x3(){
             moves++;
 
             if (check_winner(board, player)) {
-                drawBoard(a,board);
+                drawboard3(a,board);
                 printf("\nSelamat, Player %c menang!\n", player);
                 break;
             }
 
             if (moves == 9) {
-                drawBoard(a,board);
+                drawboard3(a,board);
                 printf("\nIt's a tie!\n");
                 break;
             }
@@ -309,7 +306,7 @@ void drawLine(int n) {
 }
 
 
-void drawBoard(int n, char board[3][3]) {
+void drawboard3(int n, char board[SIZE_3][SIZE_3]) {
     // Assuming a fixed terminal width for demonstration purposes
     int terminalWidth = 110;
 
@@ -319,8 +316,6 @@ void drawBoard(int n, char board[3][3]) {
     for (int i = 0; i < n; i++) {
                 // Move cursor to the middle before printing the line
         
-
-
         // Move cursor to the middle before printing the line
         printf("\e[%dG", leftPadding);
 
@@ -343,11 +338,11 @@ void drawBoard(int n, char board[3][3]) {
 
 
 
-bool is_valid_move(char board[3][3], int i, int j) {
+bool is_valid_move(char board[SIZE_3][SIZE_3], int i, int j) {
     return (board[i][j] == ' ');
 }
 
-bool check_winner(char board[3][3], char player) {
+bool check_winner(char board[SIZE_3][SIZE_3], char player) {
     // Check horizontal and vertical lines
     for (int i = 0; i < 3; i++) {
         if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
@@ -365,7 +360,7 @@ bool check_winner(char board[3][3], char player) {
     return false;
 }
 
-void print_board(char board[3][3]) {
+void print_board(char board[SIZE_3][SIZE_3]) {
     printf("\n\n");
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
@@ -375,7 +370,7 @@ void print_board(char board[3][3]) {
     }
 }
 
-void create_board(char board[3][3]) {
+void create_board(char board[SIZE_3][SIZE_3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             board[i][j] = ' ';

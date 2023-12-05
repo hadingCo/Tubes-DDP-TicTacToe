@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
+#include "sipaling_header.h"
 #include "sipaling_body.c"
+#include "body5x5.c"
+#include "body3x3.c"
 
 int main (){
 	TeksHeader();
