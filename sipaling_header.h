@@ -14,6 +14,8 @@ void PilihMode();
 void MasukkanPemain();
 void DisplayNama();
 void Permainan();
+void delay(int ms);
+void timer();
 
 //Variabel
 int a;
@@ -57,4 +59,6 @@ void drawLine7(int n);
 void drawBoard7(int n, char board[SIZE_7][SIZE_7]);
 bool checkWinner7(int n, char board[SIZE_7][SIZE_7], char player);
 bool isFull7(int n, char board[SIZE_7][SIZE_7]);
-void permainan5x5();
+void permainan7x7();
+
+

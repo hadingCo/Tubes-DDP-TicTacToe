@@ -1,4 +1,4 @@
-#include "sipaling_header.h"
+ #include "sipaling_header.h"
 
 
 
@@ -158,7 +158,8 @@ void DisplayNama()
 	printf("%*s",50, "|");
 	printf("\033[31m%s (X)\033[0m|", NamaPemain1);
 	printf("%*s",40, "|");
-	printf("\033[34m%s (O)\033[0m|", NamaPemain2);
+	printf("\033[34m%s (O)\033[0m|\n", NamaPemain2);
+	timer();
     printf("\n\n");
 }
 
@@ -218,3 +219,30 @@ void displayMenu(int tombol) {
     printf("7x7 %s\n\n", (tombol == 3) ? "\033[34m<\033[0m" : "");
 }
 
+// TIMER 10 DETIK KESEMPATAN TIAP PEMAIN
+void delay(int ms)
+{
+	clock_t timeDelay = ms + clock();
+	while (timeDelay > clock() );
+}
+
+
+void timer()
+{
+	int second = 11;
+	int waktu = 0;
+	while(waktu == 0)
+	{
+		if(second <= 11 && second >= 1)
+		{
+			delay(1000);
+			second--;
+		}
+		printf("\r%*s", 89, " ");
+		printf("%d Detik",second);
+		if(second == 0)
+		{
+			break;
+		}
+	}
+}

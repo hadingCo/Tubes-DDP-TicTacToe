@@ -4,13 +4,13 @@
 #include "body3x3.c"
 #include "body7x7.c"
 
+
 int main (){
 	TeksHeader();
 	MenuAwal();
 	PilihBoard();
 	DisplayNama();
+	
 	return 0;
 }
 
-	
-	

@@ -2,22 +2,24 @@
 
 
 
-
 void permainan5x5() {
     int n = 4;
     char board[SIZE_5][SIZE_5];
     char player = 'X';
+    TeksHeader();
 
-    for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= n; j++) {
+    for (int i = 0; i < SIZE_5; i++) {
+        for (int j = 0; j < SIZE_5; j++) {
             board[i][j] = '-';
         }
     }
 
     drawBoard5(SIZE_5, board);
 
-    while (!isFull5(n, board) && !checkWinner5(n, board, player)) {
+    while (!isFull5(SIZE_5, board) && !checkWinner5(n, board, player)) {
         system("cls");
+        TeksHeader();
+        DisplayNama();
         drawBoard5(SIZE_5, board);
         int row, col;
         printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", player, n);
@@ -41,7 +43,7 @@ void permainan5x5() {
             player = 'X';
         }
 
-        drawBoard5(n, board);
+        drawBoard5(SIZE_5, board);
     }
 
     if (isFull5(SIZE_5, board) && !checkWinner5(n, board, player)) {
@@ -52,21 +54,40 @@ void permainan5x5() {
 }
 
 
-void drawLine5(int n) {
-    for (int i = 0; i < n; i++) {
-        printf("----");
-    }
-    printf("\n");
-}
+//void drawLine5(int n) {
+//    for (int i = 0; i < n; i++) {
+//        printf("----");
+//    }
+//    printf("\n");
+//}
 
 void drawBoard5(int n, char board[SIZE_5][SIZE_5]) {
-    drawLine5(n);
+  // Assuming a fixed terminal width for demonstration purposes
+    int terminalWidth = 194;
+
+    // Calculate the left padding to center the board
+    int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
+
     for (int i = 0; i < n; i++) {
+                // Move cursor to the middle before printing the line
+        
+        // Move cursor to the middle before printing the line
+        printf("\e[%dG", leftPadding);
+
         for (int j = 0; j < n; j++) {
             printf("| %c ", board[i][j]);
         }
         printf("|\n");
-        drawLine5(n);
+
+        // Move cursor to the middle before printing the line
+        printf("\e[%dG", leftPadding);
+
+        // Draw the horizontal line
+        for (int i = 0; i < n; i++) {
+            printf("----");
+        }
+
+        printf("\n");
     }
 }
 

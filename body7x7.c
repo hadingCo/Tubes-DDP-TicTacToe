@@ -17,6 +17,8 @@ void permainan7x7() {
 
     while (!isFull7(SIZE_7, board) && !checkWinner7(n, board, player)) {
         system("cls");
+        TeksHeader();
+        DisplayNama();
         drawBoard7(SIZE_7, board);
         int row, col;
         printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", player, n);
@@ -51,23 +53,43 @@ void permainan7x7() {
 }
 
 
-void drawLine7(int n) {
-    for (int i = 0; i < n; i++) {
-        printf("-----");
-    }
-    printf("\n");
-}
+//void drawLine7(int n) {
+//    for (int i = 0; i < n; i++) {
+//        printf("-----");
+//    }
+//    printf("\n");
+//}
 
 void drawBoard7(int n, char board[SIZE_7][SIZE_7]) {
-    drawLine7(n);
+  // Assuming a fixed terminal width for demonstration purposes
+    int terminalWidth = 194;
+
+    // Calculate the left padding to center the board
+    int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
+
     for (int i = 0; i < n; i++) {
+                // Move cursor to the middle before printing the line
+        
+        // Move cursor to the middle before printing the line
+        printf("\e[%dG", leftPadding);
+
         for (int j = 0; j < n; j++) {
             printf("| %c ", board[i][j]);
         }
         printf("|\n");
-        drawLine7(n);
+
+        // Move cursor to the middle before printing the line
+        printf("\e[%dG", leftPadding);
+
+        // Draw the horizontal line
+        for (int i = 0; i < n; i++) {
+            printf("----");
+        }
+
+        printf("\n");
     }
 }
+
 
 bool checkWinner7(int n, char board[SIZE_7][SIZE_7], char player) {
     for (int i = 0; i < n; i++) {

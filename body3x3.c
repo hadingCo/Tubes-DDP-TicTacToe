@@ -9,12 +9,11 @@ void permaianan3x3(){
     TeksHeader();
     a=3;
     
-
     int i, j;
     char player = 'X';
     bool game_over = false;
     int moves = 0;
-
+	
     while (!game_over) {
         system("cls");
         TeksHeader();
@@ -22,7 +21,6 @@ void permaianan3x3(){
         drawBoard3(a,board);
         printf("\nPlayer %c, enter your move: ", player);
         scanf("%d %d", &i, &j);
-
         if (is_valid_move(board, i-1, j-1)) {
             board[i-1][j-1] = player;
             moves++;
@@ -50,18 +48,16 @@ void permaianan3x3(){
             printf("\nInvalid move, try again.\n");
         }
     }
-
-
 }
 
 
 
-void drawLine3(int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%*s",100,"----");
-    }
-    printf("\n");
-}
+//void drawLine3(int n) {
+//    for (int i = 0; i < n; i++) {
+//        printf("%*s",100,"----");
+//    }
+//    printf("\n");
+//}
 
 
 void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
@@ -131,7 +127,7 @@ void print_board3(char board[SIZE_3][SIZE_3]) {
 void create_board3(char board[SIZE_3][SIZE_3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            board[i][j] = '-';
+            board[i][j] = ' ';
 
         }
         
