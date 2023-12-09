@@ -53,14 +53,6 @@ void permainan5x5() {
 
 }
 
-
-//void drawLine5(int n) {
-//    for (int i = 0; i < n; i++) {
-//        printf("----");
-//    }
-//    printf("\n");
-//}
-
 void drawBoard5(int n, char board[SIZE_5][SIZE_5]) {
   // Assuming a fixed terminal width for demonstration purposes
     int terminalWidth = 194;

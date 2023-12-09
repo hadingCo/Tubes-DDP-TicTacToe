@@ -1,7 +1,7 @@
  #include "sipaling_header.h"
 
 
-
+// Penampil Header Program
 void TeksHeader()
 {
 	printf("%*s\n",150," _____________________________________________________________________________________________________   ");
@@ -13,6 +13,47 @@ void TeksHeader()
 	printf("%*s\n",150," ||             |_|   |___|  |____|     |_|   |_|   |_|  |____|     |_|    |___|  |_____|            ||  ");
 	printf("%*s\n",150," ||                                                                                                  ||  ");
 	printf("%*s\n",150," ||__________________________________________________________________________________________________||  ");
+	printf("\n\n");
+}
+
+
+// Visual jika player x menang (masih bingung manggilnya)
+void TeksMenangX()
+{
+	printf("%*s\n",135,"   _____  _                        __   __  __  __                              ");
+	printf("%*s\n",135,"  |  __ \| |                       \ \ / / |  \/  |                             ");
+	printf("%*s\n",135,"  | |__) | | __ _ _   _  ___ _ __   \ V /  | \  / | ___ _ __   __ _ _ __   __ _ ");
+	printf("%*s\n",135,"  |  ___/| |/ _` | | | |/ _ \ '__|   > <   | |\/| |/ _ \ '_ \ / _` | '_ \ / _` |");
+	printf("%*s\n",135,"  | |    | | (_| | |_| |  __/ |     / . \  | |  | |  __/ | | | (_| | | | | (_| |");
+	printf("%*s\n",135,"  |_|    |_|\__,_|\__, |\___|_|    /_/ \_\ |_|  |_|\___|_| |_|\__,_|_| |_|\__, |");
+	printf("%*s\n",135,"                  __/ |                                                    __/ |");
+	printf("%*s\n",135,"                 |___/                                                    |___/ ");
+	printf("\n\n");
+}
+
+// Visual jika player 0 menang (masih bingung manggilnya)
+void TeksMenangO()
+{
+	printf("%*s\n",150,"   _____  _                          ____    __  __                              ");
+	printf("%*s\n",150,"  |  __ \| |                        / __ \  |  \/  |                             ");
+	printf("%*s\n",150,"  | |__) | | __ _ _   _  ___ _ __  | |  | | | \  / | ___ _ __   __ _ _ __   __ _ ");
+	printf("%*s\n",150,"  |  ___/| |/ _` | | | |/ _ \ '__| | |  | | | |\/| |/ _ \ '_ \ / _` | '_ \ / _` |");
+	printf("%*s\n",150,"  | |    | | (_| | |_| |  __/ |    | |__| | | |  | |  __/ | | | (_| | | | | (_| |");
+	printf("%*s\n",150,"  |_|    |_|\__,_|\__, |\___|_|     \____/  |_|  |_|\___|_| |_|\__,_|_| |_|\__, |");
+	printf("%*s\n",150,"                   __/ |                                                    __/ |");
+	printf("%^s\n",150,"                  |___/                                                    |___/ ");
+	printf("\n\n");
+}
+
+// Visual jika Draw (Masih Bingung Manggilnya)
+void TeksTie()
+{
+	printf("%*s\n",150,"  _______ _____ ______ ");
+	printf("%*s\n",150," |__   __|_   _|  ____|");
+	printf("%*s\n",150,"    | |    | | | |__   ");
+	printf("%*s\n",150,"    | |    | | |  __|  ");
+	printf("%*s\n",150,"    | |   _| |_| |____ ");
+	printf("%*s\n",150,"    |_|  |_____|______|");
 	printf("\n\n");
 }
 
@@ -131,6 +172,7 @@ void PilihMode()
 // AKHIR DARI PROGRAM
 void KeluarAwal()
 {
+	system("cls");
 	printf("%*s\n",125,"  __                         __                       ");
 	printf("%*s\n",125," /__)  _      _  _  _  _    / _)  _  _  _  /  /  '  _ ");
 	printf("%*s\n",125,"/     /  ()  (/ /  (/ //)  /(_)  (- /  (/ /( /) /  /  ");
@@ -159,7 +201,6 @@ void DisplayNama()
 	printf("\033[31m%s (X)\033[0m|", NamaPemain1);
 	printf("%*s",40, "|");
 	printf("\033[34m%s (O)\033[0m|\n", NamaPemain2);
-	timer();
     printf("\n\n");
 }
 
@@ -190,17 +231,22 @@ void PilihanTombol(int tombol) {
         	system("cls");
             printf("TIGA KALI TIGA\n");
 			permaianan3x3();
+			retryMenu();
 
             break;
         case 2:
         	system("cls");
             printf("LIMA KALI LIMA\n");
             permainan5x5();
+            retryMenu();
+            
             break;
         case 3:
         	system("cls");
             printf("TUJUH KALI TUJUH\n");
             permainan7x7();
+            retryMenu();
+            
             break;
         default:
             break;
@@ -219,14 +265,14 @@ void displayMenu(int tombol) {
     printf("7x7 %s\n\n", (tombol == 3) ? "\033[34m<\033[0m" : "");
 }
 
-// TIMER 10 DETIK KESEMPATAN TIAP PEMAIN
+// Delay buat timer 
 void delay(int ms)
 {
 	clock_t timeDelay = ms + clock();
 	while (timeDelay > clock() );
 }
 
-
+// Algoritma Timer (masih bingung biar jalan berbarengan dengan permainan)
 void timer()
 {
 	int second = 11;
@@ -245,4 +291,45 @@ void timer()
 			break;
 		}
 	}
+}
+
+// Menu pilihan start again atau exit saat setelah game selesai
+void retryMenu() {
+    int tombol2 = 1;
+	
+    while (1) {
+        displayRetry(tombol2);
+
+        char key = getch(); 
+
+        if (key == 's' && tombol2 < 2) {
+            tombol2++;
+        } else if (key == 'w' && tombol2 > 1) {
+            tombol2--;
+        } else if (key == 13) { 
+            switch (tombol2) {
+                case 1:
+                    PilihBoard();
+                    break;
+                case 2:
+                    KeluarAwal();
+                    exit(0);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+// Visualisasi MenuRetry
+void displayRetry(int tombol2) {
+    system("cls"); // Clear the console screen (Windows-specific)
+    TeksHeader();
+    TeksMenangX();
+    printf("%*s\n\n",113,"\033[4mRetry Menu\033[0m");
+    printf("%*s",104, (tombol2 == 1) ? "\033[34m> \033[0m" : "");
+    printf("Play Again %s\n\n", (tombol2 == 1) ? "\033[34m<\033[0m" : "");
+    printf("%*s",104, (tombol2 == 2) ? "\033[34m> \033[0m" : "");
+    printf("Exit %s\n\n", (tombol2 == 2) ? "\033[34m<\033[0m" : "");
 }

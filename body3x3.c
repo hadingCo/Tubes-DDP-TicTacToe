@@ -30,8 +30,7 @@ void permaianan3x3(){
                 TeksHeader();
                 DisplayNama();
                 drawBoard3(a,board);
-                printf("\nSelamat, Player %c menang!\n", player);
-                break;
+                game_over = true;
             }
 
             if (moves == 9) {
@@ -39,8 +38,7 @@ void permaianan3x3(){
                 TeksHeader();
                 DisplayNama();
                 drawBoard3(a,board);
-                printf("\nIt's a tie!\n");
-                break;
+                game_over = true;
             }
 
             player = (player == 'X') ? 'O' : 'X'; // Switch player
@@ -49,16 +47,6 @@ void permaianan3x3(){
         }
     }
 }
-
-
-
-//void drawLine3(int n) {
-//    for (int i = 0; i < n; i++) {
-//        printf("%*s",100,"----");
-//    }
-//    printf("\n");
-//}
-
 
 void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
     // Assuming a fixed terminal width for demonstration purposes

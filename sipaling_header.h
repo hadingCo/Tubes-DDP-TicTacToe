@@ -14,8 +14,8 @@ void PilihMode();
 void MasukkanPemain();
 void DisplayNama();
 void Permainan();
-void delay(int ms);
 void timer();
+void retryMenu();
 
 //Variabel
 int a;
@@ -28,10 +28,11 @@ char NamaPemain1[50], NamaPemain2[50];
 void PilihBoard();
 void DisplayPilihBoard();
 
+void delay(int ms);
 
 void displayMenu(int tombol);
 void PilihanTombol(int tombol);
-
+void displayRetry(int tombol2);
 
 //3x3
 #define SIZE_3 3

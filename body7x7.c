@@ -52,14 +52,6 @@ void permainan7x7() {
 
 }
 
-
-//void drawLine7(int n) {
-//    for (int i = 0; i < n; i++) {
-//        printf("-----");
-//    }
-//    printf("\n");
-//}
-
 void drawBoard7(int n, char board[SIZE_7][SIZE_7]) {
   // Assuming a fixed terminal width for demonstration purposes
     int terminalWidth = 194;
