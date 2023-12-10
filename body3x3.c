@@ -33,7 +33,14 @@ void permainan3x3() {
 
         if (cekMenang3(n, papan, pemain)) { 
             cetakPapan3(SIZE_3, papan);
-            printf("Selamat, pemain %c menang!\n", pemain);
+            if (pemain == "X"){
+                TeksMenangX();
+                printf("Selamat, pemain %c menang!\n", pemain);
+            }else{
+                TeksMenangO();
+                printf("Selamat, pemain %c menang!\n", pemain);
+            }
+            
             break;
         }
 
@@ -47,6 +54,7 @@ void permainan3x3() {
     }
 
     if (cekPapan3(SIZE_3, papan) && !cekMenang3(n, papan, pemain)) {
+        TeksTie();
         printf("Game berakhir seri.\n");
     }
 

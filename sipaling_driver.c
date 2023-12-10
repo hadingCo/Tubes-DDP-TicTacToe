@@ -9,8 +9,6 @@ int main (){
 	TeksHeader();
 	MenuAwal();
 	PilihBoard();
-	DisplayNama();
-	
 	return 0;
 }
 

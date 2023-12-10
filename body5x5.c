@@ -33,7 +33,14 @@ void permainan5x5() {
         }
 
         if (cekMenang5(n, papan, pemain)) {
-            printf("Selamat, pemain %c menang!\n", pemain);
+            if (pemain == "X"){
+                TeksMenangX();
+                printf("Selamat, pemain %c menang!\n", pemain);
+            }else{
+                TeksMenangO();
+                printf("Selamat, pemain %c menang!\n", pemain);
+            }
+            
             break;
         }
 
@@ -47,6 +54,7 @@ void permainan5x5() {
     }
 
     if (cekPapan5(SIZE_5, papan) && !cekMenang5(n, papan, pemain)) {
+        TeksTie();
         printf("Game berakhir seri.\n");
     }
 
