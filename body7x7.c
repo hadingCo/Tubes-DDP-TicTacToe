@@ -4,59 +4,59 @@
 
 void permainan7x7() {
     int n = 5;
-    char board[SIZE_7][SIZE_7];
-    char player = 'X';
+    char papan[SIZE_7][SIZE_7];
+    char pemain = 'X';
 
     for (int i = 0; i < SIZE_7; i++) {
         for (int j = 0; j < SIZE_7; j++) {
-            board[i][j] = '-';
+            papan[i][j] = '-';
         }
     }
 
-    drawBoard7(SIZE_7, board);
+    cetakPapan7(SIZE_7, papan);
 
-    while (!isFull7(SIZE_7, board) && !checkWinner7(n, board, player)) {
+    while (!cekPapan7(SIZE_7, papan) && !cekMenang7(n, papan, pemain)) {
         system("cls");
         TeksHeader();
         DisplayNama();
-        drawBoard7(SIZE_7, board);
+        cetakPapan7(SIZE_7, papan);
         int row, col;
-        printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", player, n);
+        printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", pemain, n);
         scanf("%d %d", &row, &col);
 
-        if (board[row - 1][col - 1] == '-') {
-            board[row - 1][col - 1] = player;
+        if (papan[row - 1][col - 1] == '-') {
+            papan[row - 1][col - 1] = pemain;
         } else {
             printf("Posisi sudah diisi.\n");
             continue;
         }
 
-        if (checkWinner7(n, board, player)) {
-            printf("Selamat, pemain %c menang!\n", player);
+        if (cekMenang7(n, papan, pemain)) { 
+            printf("Selamat, pemain %c menang!\n", pemain);
             break;
         }
 
-        if (player == 'X') {
-            player = 'O';
+        if (pemain == 'X') { 
+            pemain = 'O';
         } else {
-            player = 'X';
+            pemain = 'X';
         }
 
-        drawBoard7(SIZE_7, board);
+        cetakPapan7(SIZE_7, papan);
     }
 
-    if (isFull7(SIZE_7, board) && !checkWinner7(n, board, player)) {
+    if (cekPapan7(SIZE_7, papan) && !cekMenang7(n, papan, pemain)) {
         printf("Game berakhir seri.\n");
     }
 
 
 }
 
-void drawBoard7(int n, char board[SIZE_7][SIZE_7]) {
+void cetakPapan7(int n, char papan[SIZE_7][SIZE_7]) {
   // Assuming a fixed terminal width for demonstration purposes
     int terminalWidth = 194;
 
-    // Calculate the left padding to center the board
+    // Calculate the left padding to center the papan
     int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
 
     for (int i = 0; i < n; i++) {
@@ -66,7 +66,7 @@ void drawBoard7(int n, char board[SIZE_7][SIZE_7]) {
         printf("\e[%dG", leftPadding);
 
         for (int j = 0; j < n; j++) {
-            printf("| %c ", board[i][j]);
+            printf("| %c ", papan[i][j]);
         }
         printf("|\n");
 
@@ -83,30 +83,30 @@ void drawBoard7(int n, char board[SIZE_7][SIZE_7]) {
 }
 
 
-bool checkWinner7(int n, char board[SIZE_7][SIZE_7], char player) {
+bool cekMenang7(int n, char papan[SIZE_7][SIZE_7], char pemain) {
     for (int i = 0; i < n; i++) {
         int rowCount = 0, colCount = 0;
         for (int j = 0; j < n; j++) {
-            if (board[i][j] == player) rowCount++;
-            if (board[j][i] == player) colCount++;
+            if (papan[i][j] == pemain) rowCount++;
+            if (papan[j][i] == pemain) colCount++;
         }
         if (rowCount == n || colCount == n) return true;
     }
 
     int diagonalCount = 0, antiDiagonalCount = 0;
     for (int i = 0; i < n; i++) {
-        if (board[i][i] == player) diagonalCount++;
-        if (board[i][n - i - 1] == player) antiDiagonalCount++;
+        if (papan[i][i] == pemain) diagonalCount++;
+        if (papan[i][n - i - 1] == pemain) antiDiagonalCount++;
     }
     if (diagonalCount == n || antiDiagonalCount == n) return true;
 
     return false;
 }
 
-bool isFull7(int n, char board[SIZE_7][SIZE_7]) {
+bool cekPapan7(int n, char papan[SIZE_7][SIZE_7]) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (board[i][j] == '-') return false;
+            if (papan[i][j] == '-') return false;
         }
     }
     return true;

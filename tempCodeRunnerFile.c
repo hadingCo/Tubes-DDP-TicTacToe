@@ -1,26 +1,34 @@
-#include "sipaling_header.h"
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdbool.h>
+
+#define SIZE_7 3
+void drawLine7(int n);
+void drawBoard7(int n, char papan[SIZE_7][SIZE_7]);
+bool checkWinner7(int n, char papan[SIZE_7][SIZE_7], char player);
+bool isFull7(int n, char papan[SIZE_7][SIZE_7]);
 
 
-
-void permainan5x5() {
-    int n = 4;
-    char papan[SIZE_5][SIZE_5];
+int main() {
+    int n = 3;
+    char papan[SIZE_7][SIZE_7];
     char pemain = 'X';
-    TeksHeader();
 
-    for (int i = 0; i < SIZE_5; i++) {
-        for (int j = 0; j < SIZE_5; j++) {
+    for (int i = 0; i < SIZE_7; i++) {
+        for (int j = 0; j < SIZE_7; j++) {
             papan[i][j] = '-';
         }
     }
 
-    cetakPapan5(SIZE_5, papan);
+    drawBoard7(SIZE_7, papan);
 
-    while (!cekPapan5(SIZE_5, papan) && !cekMenang5(n, papan, pemain)) {
+    while (!isFull7(SIZE_7, papan) && !checkWinner7(n, papan, pemain)) {
         system("cls");
-        TeksHeader();
-        DisplayNama();
-        cetakPapan5(SIZE_5, papan);
+        // TeksHeader();
+        // DisplayNama();
+        drawBoard7(SIZE_7, papan);
         int row, col;
         printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", pemain, n);
         scanf("%d %d", &row, &col);
@@ -32,28 +40,29 @@ void permainan5x5() {
             continue;
         }
 
-        if (cekMenang5(n, papan, pemain)) {
+        if (checkWinner7(n, papan, pemain)) { 
+            drawBoard7(SIZE_7, papan);
             printf("Selamat, pemain %c menang!\n", pemain);
             break;
         }
 
-        if (pemain == 'X') {
+        if (pemain == 'X') { 
             pemain = 'O';
         } else {
             pemain = 'X';
         }
 
-        cetakPapan5(SIZE_5, papan);
+        drawBoard7(SIZE_7, papan);
     }
 
-    if (cekPapan5(SIZE_5, papan) && !cekMenang5(n, papan, pemain)) {
+    if (isFull7(SIZE_7, papan) && !checkWinner7(n, papan, pemain)) {
         printf("Game berakhir seri.\n");
     }
 
-
+return 0;
 }
 
-void cetakPapan5(int n, char papan[SIZE_5][SIZE_5]) {
+void drawBoard7(int n, char papan[SIZE_7][SIZE_7]) {
   // Assuming a fixed terminal width for demonstration purposes
     int terminalWidth = 194;
 
@@ -83,7 +92,8 @@ void cetakPapan5(int n, char papan[SIZE_5][SIZE_5]) {
     }
 }
 
-bool cekMenang5(int n, char papan[SIZE_5][SIZE_5], char pemain) {
+
+bool checkWinner7(int n, char papan[SIZE_7][SIZE_7], char pemain) {
     for (int i = 0; i < n; i++) {
         int rowCount = 0, colCount = 0;
         for (int j = 0; j < n; j++) {
@@ -103,7 +113,7 @@ bool cekMenang5(int n, char papan[SIZE_5][SIZE_5], char pemain) {
     return false;
 }
 
-bool cekPapan5(int n, char papan[SIZE_5][SIZE_5]) {
+bool isFull7(int n, char papan[SIZE_7][SIZE_7]) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (papan[i][j] == '-') return false;

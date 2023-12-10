@@ -2,57 +2,62 @@
 
 
 //3x3
-void permaianan3x3(){
-    int a;
-    char board[3][3];
-    create_board3(board);
-    TeksHeader();
-    a=3;
-    
-    int i, j;
-    char player = 'X';
-    bool game_over = false;
-    int moves = 0;
-	
-    while (!game_over) {
+void permainan3x3() {
+    int n = 3;
+    char papan[SIZE_3][SIZE_3];
+    char pemain = 'X';
+
+    for (int i = 0; i < SIZE_3; i++) {
+        for (int j = 0; j < SIZE_3; j++) {
+            papan[i][j] = '-';
+        }
+    }
+
+    cetakPapan3(SIZE_3, papan);
+
+    while (!cekPapan3(SIZE_3, papan) && !cekMenang3(n, papan, pemain)) {
         system("cls");
         TeksHeader();
         DisplayNama();
-        drawBoard3(a,board);
-        printf("\nPlayer %c, enter your move: ", player);
-        scanf("%d %d", &i, &j);
-        if (is_valid_move(board, i-1, j-1)) {
-            board[i-1][j-1] = player;
-            moves++;
+        cetakPapan3(SIZE_3, papan);
+        int row, col;
+        printf("Giliran pemain %c. Masukkan baris dan kolom (1-%d): ", pemain, n);
+        scanf("%d %d", &row, &col);
 
-            if (check_winner3(board, player)) {
-                system("cls");
-                TeksHeader();
-                DisplayNama();
-                drawBoard3(a,board);
-                game_over = true;
-            }
-
-            if (moves == 9) {
-                system("cls");
-                TeksHeader();
-                DisplayNama();
-                drawBoard3(a,board);
-                game_over = true;
-            }
-
-            player = (player == 'X') ? 'O' : 'X'; // Switch player
+        if (papan[row - 1][col - 1] == '-') {
+            papan[row - 1][col - 1] = pemain;
         } else {
-            printf("\nInvalid move, try again.\n");
+            printf("Posisi sudah diisi.\n");
+            continue;
         }
+
+        if (cekMenang3(n, papan, pemain)) { 
+            cetakPapan3(SIZE_3, papan);
+            printf("Selamat, pemain %c menang!\n", pemain);
+            break;
+        }
+
+        if (pemain == 'X') { 
+            pemain = 'O';
+        } else {
+            pemain = 'X';
+        }
+
+        cetakPapan3(SIZE_3, papan);
     }
+
+    if (cekPapan3(SIZE_3, papan) && !cekMenang3(n, papan, pemain)) {
+        printf("Game berakhir seri.\n");
+    }
+
+
 }
 
-void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
-    // Assuming a fixed terminal width for demonstration purposes
-    int terminalWidth = 186;
+void cetakPapan3(int n, char papan[SIZE_3][SIZE_3]) {
+  // Assuming a fixed terminal width for demonstration purposes
+    int terminalWidth = 194;
 
-    // Calculate the left padding to center the board
+    // Calculate the left padding to center the papan
     int leftPadding = (terminalWidth - (n * 4 - 1)) / 2;
 
     for (int i = 0; i < n; i++) {
@@ -62,7 +67,7 @@ void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
         printf("\e[%dG", leftPadding);
 
         for (int j = 0; j < n; j++) {
-            printf("| %c ", board[i][j]);
+            printf("| %c ", papan[i][j]);
         }
         printf("|\n");
 
@@ -70,7 +75,7 @@ void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
         printf("\e[%dG", leftPadding);
 
         // Draw the horizontal line
-        for (int k = 0; k < n ; k++) {
+        for (int i = 0; i < n; i++) {
             printf("----");
         }
 
@@ -79,47 +84,33 @@ void drawBoard3(int n, char board[SIZE_3][SIZE_3]) {
 }
 
 
-
-bool is_valid_move(char board[SIZE_3][SIZE_3], int i, int j) {
-    return (board[i][j] == ' ');
-}
-
-bool check_winner3(char board[SIZE_3][SIZE_3], char player) {
-    // Check horizontal and vertical lines
-    for (int i = 0; i < 3; i++) {
-        if (board[i][0] == player && board[i][1] == player && board[i][2] == player)
-            return true;
-        if (board[0][i] == player && board[1][i] == player && board[2][i] == player)
-            return true;
+bool cekMenang3(int n, char papan[SIZE_3][SIZE_3], char pemain) {
+    for (int i = 0; i < n; i++) {
+        int rowCount = 0, colCount = 0;
+        for (int j = 0; j < n; j++) {
+            if (papan[i][j] == pemain) rowCount++;
+            if (papan[j][i] == pemain) colCount++;
+        }
+        if (rowCount == n || colCount == n) return true;
     }
 
-    // Check diagonals
-    if (board[0][0] == player && board[1][1] == player && board[2][2] == player)
-        return true;
-    if (board[0][2] == player && board[1][1] == player && board[2][0] == player)
-        return true;
+    int diagonalCount = 0, antiDiagonalCount = 0;
+    for (int i = 0; i < n; i++) {
+        if (papan[i][i] == pemain) diagonalCount++;
+        if (papan[i][n - i - 1] == pemain) antiDiagonalCount++;
+    }
+    if (diagonalCount == n || antiDiagonalCount == n) return true;
 
     return false;
 }
 
-void print_board3(char board[SIZE_3][SIZE_3]) {
-    printf("\n\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            printf("%c ", board[i][j]);
+bool cekPapan3(int n, char papan[SIZE_3][SIZE_3]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (papan[i][j] == '-') return false;
         }
-        printf("\n");
     }
-}
-
-void create_board3(char board[SIZE_3][SIZE_3]) {
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            board[i][j] = ' ';
-
-        }
-        
-    }
+    return true;
 }
 
 

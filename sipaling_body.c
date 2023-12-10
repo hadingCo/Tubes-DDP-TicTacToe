@@ -230,7 +230,7 @@ void PilihanTombol(int tombol) {
         case 1:
         	system("cls");
             printf("TIGA KALI TIGA\n");
-			permaianan3x3();
+			permainan3x3();
 			retryMenu();
 
             break;
