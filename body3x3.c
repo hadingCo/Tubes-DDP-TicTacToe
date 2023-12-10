@@ -1,7 +1,5 @@
 #include "sipaling_header.h"
 
-
-//3x3
 void permainan3x3() {
     int n = 3;
     char papan[SIZE_3][SIZE_3];
@@ -31,20 +29,25 @@ void permainan3x3() {
             continue;
         }
 
-        if (cekMenang3(n, papan, pemain)) { 
+        if (cekMenang3(n, papan, pemain)) {
             cetakPapan3(SIZE_3, papan);
-            if (pemain == "X"){
+            if (pemain == 'X') {
+                scorePlayerX++;
+            	system("cls");            
                 TeksMenangX();
-                printf("Selamat, pemain %c menang!\n", pemain);
-            }else{
+                
+                break;
+            } else {
+                scorePlayerO++;
+            	system("cls");                    
                 TeksMenangO();
-                printf("Selamat, pemain %c menang!\n", pemain);
+                
+                break;
             }
             
-            break;
         }
 
-        if (pemain == 'X') { 
+        if (pemain == 'X') {
             pemain = 'O';
         } else {
             pemain = 'X';
@@ -54,11 +57,10 @@ void permainan3x3() {
     }
 
     if (cekPapan3(SIZE_3, papan) && !cekMenang3(n, papan, pemain)) {
+    	system("cls");
         TeksTie();
-        printf("Game berakhir seri.\n");
     }
-
-
+	retryMenu(&scorePlayerX, &scorePlayerO);
 }
 
 void cetakPapan3(int n, char papan[SIZE_3][SIZE_3]) {

@@ -6,7 +6,6 @@
 
 
 int main (){
-	TeksHeader();
 	MenuAwal();
 	PilihBoard();
 	return 0;

@@ -19,47 +19,42 @@ void TeksHeader()
 
 // Visual jika player x menang (masih bingung manggilnya)
 void TeksMenangX()
-{
-	printf("%*s\n",135,"   _____  _                        __   __  __  __                              ");
-	printf("%*s\n",135,"  |  __ \| |                       \ \ / / |  \/  |                             ");
-	printf("%*s\n",135,"  | |__) | | __ _ _   _  ___ _ __   \ V /  | \  / | ___ _ __   __ _ _ __   __ _ ");
-	printf("%*s\n",135,"  |  ___/| |/ _` | | | |/ _ \ '__|   > <   | |\/| |/ _ \ '_ \ / _` | '_ \ / _` |");
-	printf("%*s\n",135,"  | |    | | (_| | |_| |  __/ |     / . \  | |  | |  __/ | | | (_| | | | | (_| |");
-	printf("%*s\n",135,"  |_|    |_|\__,_|\__, |\___|_|    /_/ \_\ |_|  |_|\___|_| |_|\__,_|_| |_|\__, |");
-	printf("%*s\n",135,"                  __/ |                                                    __/ |");
-	printf("%*s\n",135,"                 |___/                                                    |___/ ");
+{                                                                        
+	printf("%*s\n",150,",---.|                            .  ,    ,-.-.                         ");
+	printf("%*s\n",150,"|---'|    ,---.,   .,---.,---.     ><     | | |,---.,---.,---.,---.,---.");
+	printf("%*s\n",150,"|    |    ,---||   ||---'|        |  |    | | ||---'|   |,---||   ||   |");
+	printf("%*s\n",150,"`    `---'`---^`---|`---'`        '  `    ` ' '`---'`   '`---^`   '`---|");
+	printf("%*s\n",150,"               `---'                                               `---'"); 	
 	printf("\n\n");
 }
 
 // Visual jika player 0 menang (masih bingung manggilnya)
 void TeksMenangO()
-{
-	printf("%*s\n",150,"   _____  _                          ____    __  __                              ");
-	printf("%*s\n",150,"  |  __ \| |                        / __ \  |  \/  |                             ");
-	printf("%*s\n",150,"  | |__) | | __ _ _   _  ___ _ __  | |  | | | \  / | ___ _ __   __ _ _ __   __ _ ");
-	printf("%*s\n",150,"  |  ___/| |/ _` | | | |/ _ \ '__| | |  | | | |\/| |/ _ \ '_ \ / _` | '_ \ / _` |");
-	printf("%*s\n",150,"  | |    | | (_| | |_| |  __/ |    | |__| | | |  | |  __/ | | | (_| | | | | (_| |");
-	printf("%*s\n",150,"  |_|    |_|\__,_|\__, |\___|_|     \____/  |_|  |_|\___|_| |_|\__,_|_| |_|\__, |");
-	printf("%*s\n",150,"                   __/ |                                                    __/ |");
-	printf("%^s\n",150,"                  |___/                                                    |___/ ");
+{                                                                         
+	printf("%*s\n",150,",---.|                            ,---.    ,-.-.                         ");
+	printf("%*s\n",150,"|---'|    ,---.,   .,---.,---.    |   |    | | |,---.,---.,---.,---.,---.");
+	printf("%*s\n",150,"|    |    ,---||   ||---'|        |   |    | | ||---'|   |,---||   ||   |");
+	printf("%*s\n",150,"`    `---'`---^`---|`---'`        `---'    ` ' '`---'`   '`---^`   '`---|");
+	printf("%*s\n",150,"               `---'                                                `---'");
 	printf("\n\n");
 }
 
 // Visual jika Draw (Masih Bingung Manggilnya)
 void TeksTie()
 {
-	printf("%*s\n",150,"  _______ _____ ______ ");
-	printf("%*s\n",150," |__   __|_   _|  ____|");
-	printf("%*s\n",150,"    | |    | | | |__   ");
-	printf("%*s\n",150,"    | |    | | |  __|  ");
-	printf("%*s\n",150,"    | |   _| |_| |____ ");
-	printf("%*s\n",150,"    |_|  |_____|______|");
+	printf("%*s\n",135,"  _______ _____ ______ ");
+	printf("%*s\n",135," |__   __|_   _|  ____|");
+	printf("%*s\n",135,"    | |    | | | |__   ");
+	printf("%*s\n",135,"    | |    | | |  __|  ");
+	printf("%*s\n",135,"    | |   _| |_| |____ ");
+	printf("%*s\n",135,"    |_|  |_____|______|");
 	printf("\n\n");
 }
 
 void MenuAwal()
 {	
 	b=1;
+	TeksHeader();
 	printf("\n\n");
 	printf("%*s\n",112,"> \033[33m(1) Start\033[0m <");
 	printf("\n");
@@ -109,8 +104,7 @@ void MenuAwal()
                 }
                 break;
 		}
-	}
-		
+	}	
 }
 
 void PilihMode()
@@ -231,22 +225,19 @@ void PilihanTombol(int tombol) {
         	system("cls");
             printf("TIGA KALI TIGA\n");
 			permainan3x3();
-			retryMenu();
 
             break;
         case 2:
         	system("cls");
             printf("LIMA KALI LIMA\n");
             permainan5x5();
-            retryMenu();
             
             break;
         case 3:
         	system("cls");
             printf("TUJUH KALI TUJUH\n");
             permainan7x7();
-            retryMenu();
-            
+
             break;
         default:
             break;
@@ -293,13 +284,11 @@ void timer()
 	}
 }
 
-// Menu pilihan start again atau exit saat setelah game selesai
-void retryMenu() {
+// Menu pilihan start again atau exit setelah game selesai
+void retryMenu(int *scorePlayerX, int *scorePlayerO) {
     int tombol2 = 1;
-	
-    while (1) {
-        displayRetry(tombol2);
 
+    while (1) {
         char key = getch(); 
 
         if (key == 's' && tombol2 < 2) {
@@ -319,17 +308,22 @@ void retryMenu() {
                     break;
             }
         }
+        // Display the updated retry menu
+        displayRetry(tombol2, *scorePlayerX, *scorePlayerO);
     }
 }
 
 // Visualisasi MenuRetry
-void displayRetry(int tombol2) {
-    system("cls"); // Clear the console screen (Windows-specific)
+void displayRetry(int tombol2, int scoreX, int scoreO) {
+	system("cls");
     TeksHeader();
-    TeksMenangX();
-    printf("%*s\n\n",113,"\033[4mRetry Menu\033[0m");
-    printf("%*s",104, (tombol2 == 1) ? "\033[34m> \033[0m" : "");
+    printf("%*s\n\n", 113, "\033[4mRetry Menu\033[0m");
+    printf("%*s", 104, (tombol2 == 1) ? "\033[34m> \033[0m" : "");
     printf("Play Again %s\n\n", (tombol2 == 1) ? "\033[34m<\033[0m" : "");
-    printf("%*s",104, (tombol2 == 2) ? "\033[34m> \033[0m" : "");
+    printf("%*s", 104, (tombol2 == 2) ? "\033[34m> \033[0m" : "");
     printf("Exit %s\n\n", (tombol2 == 2) ? "\033[34m<\033[0m" : "");
+
+    // Display scores
+    printf("%*s", 89, " ");
+    printf("Skor: %s (%d) - %s (%d)\n", NamaPemain1, scoreX, NamaPemain2, scoreO);
 }
