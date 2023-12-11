@@ -7,6 +7,7 @@
 
 
 int main (){
+	
 	MenuAwal();
 	PilihBoard();
 	return 0;

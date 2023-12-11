@@ -4,8 +4,6 @@
 #include <time.h>
 #include <stdbool.h>
 
-
-
 //Prosedur
 void TeksHeader();
 void MenuAwal();
@@ -55,5 +53,3 @@ void cetakPapan7(int n, char papan[SIZE_7][SIZE_7]);
 bool cekMenang7(int n, char papan[SIZE_7][SIZE_7], char player);
 bool cekPapan7(int n, char papan[SIZE_7][SIZE_7]);
 void permainan7x7();
-
-

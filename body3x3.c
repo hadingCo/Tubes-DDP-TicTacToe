@@ -122,5 +122,3 @@ bool cekPapan3(int n, char papan[SIZE_3][SIZE_3]) {
     }
     return true;
 }
-
-

@@ -1,8 +1,5 @@
 #include "sipaling_header.h"
 
-int scorePlayerX = 0;
-int scorePlayerO = 0;
-
 void permainan5x5() {
     int n = 4;
     char papan[SIZE_5][SIZE_5];
