@@ -317,13 +317,15 @@ void retryMenu(int *scorePlayerX, int *scorePlayerO) {
 void displayRetry(int tombol2, int scoreX, int scoreO) {
 	system("cls");
     TeksHeader();
+    // Display scores
+    int padding = 180 - strlen(NamaPemain1) - strlen(NamaPemain2); // Adjust 40 based on your layout
+    printf("%*s", padding / 2, " ");
+    printf("Skor: %s (%d) - %s (%d)\n\n", NamaPemain1, scoreX, NamaPemain2, scoreO);
+    //Displa Retry
     printf("%*s\n\n", 113, "\033[4mRetry Menu\033[0m");
     printf("%*s", 104, (tombol2 == 1) ? "\033[34m> \033[0m" : "");
     printf("Play Again %s\n\n", (tombol2 == 1) ? "\033[34m<\033[0m" : "");
     printf("%*s", 104, (tombol2 == 2) ? "\033[34m> \033[0m" : "");
     printf("Exit %s\n\n", (tombol2 == 2) ? "\033[34m<\033[0m" : "");
 
-    // Display scores
-    printf("%*s", 89, " ");
-    printf("Skor: %s (%d) - %s (%d)\n", NamaPemain1, scoreX, NamaPemain2, scoreO);
 }
