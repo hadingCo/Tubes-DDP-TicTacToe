@@ -42,19 +42,16 @@ void permainan7x7() {
 
             break;
         }
-
+        if (cekPapan7(SIZE_7, papan) && !cekMenang7(n, papan, pemain)) {
+    	system("cls");
+        TeksTie();
+        }
         if (pemain == 'X') { 
             pemain = 'O';
         } else {
             pemain = 'X';
         }
-
         cetakPapan7(SIZE_7, papan);
-    }
-
-    if (cekPapan7(SIZE_7, papan) && !cekMenang7(n, papan, pemain)) {
-    	system("cls");
-        TeksTie();
     }
 	retryMenu(&scorePlayerX, &scorePlayerO);
 }

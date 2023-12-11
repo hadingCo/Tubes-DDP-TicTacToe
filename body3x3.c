@@ -46,6 +46,11 @@ void permainan3x3() {
             }
             
         }
+        if (cekPapan3(SIZE_3, papan) ) {
+    	system("cls");
+        TeksTie();
+        break;
+        }
 
         if (pemain == 'X') {
             pemain = 'O';
@@ -56,10 +61,6 @@ void permainan3x3() {
         cetakPapan3(SIZE_3, papan);
     }
 
-    if (cekPapan3(SIZE_3, papan) && !cekMenang3(n, papan, pemain)) {
-    	system("cls");
-        TeksTie();
-    }
 	retryMenu(&scorePlayerX, &scorePlayerO);
 }
 

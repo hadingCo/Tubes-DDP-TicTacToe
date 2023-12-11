@@ -43,6 +43,11 @@ void permainan5x5() {
 
             break;
         }
+        if (cekPapan3(SIZE_3, papan) ) {
+    	system("cls");
+        TeksTie();
+        break;
+        }
 
         if (pemain == 'X') {
             pemain = 'O';
@@ -53,10 +58,7 @@ void permainan5x5() {
         cetakPapan5(SIZE_5, papan);
     }
 
-    if (cekPapan5(SIZE_5, papan) && !cekMenang5(n, papan, pemain)) {
-		system("cls");
-        TeksTie();
-    }
+    
 	retryMenu(&scorePlayerX, &scorePlayerO);
 }
 
