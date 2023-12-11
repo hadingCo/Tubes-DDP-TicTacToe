@@ -30,7 +30,7 @@ void delay(int ms);
 void displayMenu(int tombol);
 void PilihanTombol(int tombol);
 void displayRetry(int tombol2, int scoreX, int scoreO);
-
+void cetakleardboard(int scoreX, int scoreO, char *pmn1, char *pmn2);
 //3x3
 #define SIZE_3 3
 #define SIZE_3 3

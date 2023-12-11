@@ -1,0 +1,2 @@
+skor pemain a adalah 0
+skor pemain a adalah 1

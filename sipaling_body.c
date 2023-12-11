@@ -174,6 +174,7 @@ void KeluarAwal()
     printf("%*s\n",125,"/     /  ()  (/ /  (/ //)  /(_)  (- /  (/ /( /) /  /  ");
     printf("%*s\n",125,"            _/                                        ");
     printf("\n\n\n");
+    cetakleardboard(scorePlayerX, scorePlayerO,NamaPemain1, NamaPemain2);
     exit(1);
     
 }
@@ -305,6 +306,7 @@ void retryMenu(int *scorePlayerX, int *scorePlayerO) {
                 case 2:
                     KeluarAwal();
                     exit(0);
+                    
                     break;
                 default:
                     break;
@@ -330,4 +332,10 @@ void displayRetry(int tombol2, int scoreX, int scoreO) {
     printf("%*s", 104, (tombol2 == 2) ? "\033[34m> \033[0m" : "");
     printf("Exit %s\n\n", (tombol2 == 2) ? "\033[34m<\033[0m" : "");
 
+}
+void cetakleardboard(int scoreX, int scoreO, char *pmn1, char *pmn2){
+	FILE *file;
+    file = fopen("leardboard.txt", "w");
+    fprintf(file, "skor pemain %c adalah %d\n", *pmn1,scoreX );
+    fprintf(file, "skor pemain %c adalah %d\n", *pmn2,scoreO );
 }
